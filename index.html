@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Hue is a color&#45;based emotional check&#45;in app that helps users reflect on mood, intensity, and energy.">
+        <meta name="author" content="Jeanne Tucker">
+
+        <title>Hue</title>
+
+        <link rel="stylesheet" href="styles.css">
+        <script src="scripts.js" defer></script>
+    </head>
+    <body>
+        <a href="#main" class="skip">Skip to Main Content</a>
+
+        <header>
+            <h1>Hue</h1>
+            <p id="tagline">Explore your inner spectrum!</p>
+        </header>
+        <main id="main">
+            <section id="welcome">
+                <h2>Welcome to Hue</h2>
+                <p>A color&#45;based check&#45;in for tracking how you feel.</p>
+                <button type="button" id="start-checkin">Start check&#45;In</button>
+            </section>
+            <section id="checkin">
+                <h2>Check&#45;In</h2>
+                <section id="color-selection">
+                    <h3>What color are you feeling right now?</h3>
+
+                    <input type="color" id="color-picker">
+                    <button type="button" id="color-next">Next</button>
+                </section>
+                <section id="intensity-selection">
+                    <h3>How overwhelmed do you feel?</h3>
+
+                    <div class="scale">
+                        <span>Calm</span>
+                        <span>overwhelmed</span>
+                    </div>
+                </section>
+                <section id="energy-selection">
+                    <h3>What is your energy level?</h3>
+                </section>
+            </section>
+        </main>
+        <footer>
+            <p>&copy;2026 Hue developed and created by Jeanne Tucker</p>
+        </footer>
+    </body>
+</html>
