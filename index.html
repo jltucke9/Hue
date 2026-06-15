@@ -29,19 +29,39 @@
                 <section id="color-selection">
                     <h3>What color are you feeling right now?</h3>
 
+                    <label for="color-picker">Choose your mood color</label>
                     <input type="color" id="color-picker">
-                    <button type="button" id="color-next">Next</button>
+                    <button type="button" id="color-next-btn">Next</button>
+
                 </section>
                 <section id="intensity-selection">
                     <h3>How overwhelmed do you feel?</h3>
 
                     <div class="scale">
                         <span>Calm</span>
-                        <span>overwhelmed</span>
+                        <span>Overwhelmed</span>
                     </div>
+
+                    <label for="intensity">Intensity Scale</label>
+                    <input type="range" id="intensity" min="0" max="10" value="5">
+                    
+                    <p>Intensity&#58; <span id="intensity-value">5</span></p>
+                    <button type="button" id="intensity-next-btn">Next</button>
+
                 </section>
                 <section id="energy-selection">
                     <h3>What is your energy level?</h3>
+                    
+                    <div class="scale">
+                        <span>Exhausted</span>
+                        <span>Energized</span>
+                    </div>
+
+                    <label for="energy">Energy Scale</label>
+                    <input type="range" id="energy" min="0" max="10" value="5">
+                    
+                    <p>Energy&#58; <span id="energy-value">5</span></p>
+                    <button type="button" id="save-checkin-btn">Next</button>
                 </section>
             </section>
         </main>
