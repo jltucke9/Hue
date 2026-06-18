@@ -6,7 +6,7 @@
         <meta name="description" content="Hue is a color&#45;based emotional check&#45;in app that helps users reflect on mood, intensity, and energy.">
         <meta name="author" content="Jeanne Tucker">
 
-        <title>Hue</title>
+        <title>Hue &#124; Home</title>
 
         <link rel="stylesheet" href="styles.css">
         <script src="scripts.js" defer></script>
@@ -23,46 +23,6 @@
                 <h2>Welcome to Hue</h2>
                 <p>A color&#45;based check&#45;in for tracking how you feel.</p>
                 <button type="button" id="start-checkin">Start check&#45;In</button>
-            </section>
-            <section id="checkin">
-                <h2>Check&#45;In</h2>
-                <section id="color-selection">
-                    <h3>What color are you feeling right now?</h3>
-
-                    <label for="color-picker">Choose your mood color</label>
-                    <input type="color" id="color-picker">
-                    <button type="button" id="color-next-btn">Next</button>
-
-                </section>
-                <section id="intensity-selection">
-                    <h3>How overwhelmed do you feel?</h3>
-
-                    <div class="scale">
-                        <span>Calm</span>
-                        <span>Overwhelmed</span>
-                    </div>
-
-                    <label for="intensity">Intensity Scale</label>
-                    <input type="range" id="intensity" min="0" max="10" value="5">
-                    
-                    <p>Intensity&#58; <span id="intensity-value">5</span></p>
-                    <button type="button" id="intensity-next-btn">Next</button>
-
-                </section>
-                <section id="energy-selection">
-                    <h3>What is your energy level?</h3>
-                    
-                    <div class="scale">
-                        <span>Exhausted</span>
-                        <span>Energized</span>
-                    </div>
-
-                    <label for="energy">Energy Scale</label>
-                    <input type="range" id="energy" min="0" max="10" value="5">
-                    
-                    <p>Energy&#58; <span id="energy-value">5</span></p>
-                    <button type="button" id="save-checkin-btn">Next</button>
-                </section>
             </section>
         </main>
         <footer>
