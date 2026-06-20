@@ -25,15 +25,19 @@
         <main id="main">
             <section id="checkin">
                 <h2>Check&#45;In</h2>
-                <section id="color-selection">
+                <section class="step">
                     <h3>What color are you feeling right now?</h3>
 
                     <label for="color-picker">Choose your mood color</label>
-                    <input type="color" id="color-picker">
+
+                    <div class="color-wheel">
+                        <input type="color" id="color-picker"><span class="magnifier"></span>
+                    </div>
+                    
                     <button type="button" id="color-next-btn">Next</button>
 
                 </section>
-                <section id="intensity-selection">
+                <section class="step hidden">
                     <h3>How overwhelmed do you feel?</h3>
 
                     <div class="scale">
@@ -48,7 +52,7 @@
                     <button type="button" id="intensity-next-btn">Next</button>
 
                 </section>
-                <section id="energy-selection">
+                <section class="step hidden">
                     <h3>What is your energy level?</h3>
                     
                     <div class="scale">

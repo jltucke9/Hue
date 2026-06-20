@@ -85,12 +85,13 @@ table {
     --radius-sm: 0.25rem;
     --radius-md: 0.5rem;
     --radius-lg: 1rem;
+    --circle: 50%
 
     /* Shadow */
     --shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-
-
 }
+
+/* Global Styles */
 
 * {
     box-sizing: border-box;
@@ -112,15 +113,13 @@ table {
 }
 
 body {
+    background:
+        radial-gradient(circle at top center, rgba(92,123,166,0.15), transparent 50%), var(--midnight);
     background-color: var(--midnight);
     color: var(--soft-text);
     font-family: var(--font-main);
     line-height: 1.5;
     min-height: 100vh;
-}
-
-header {
-    padding: 3rem;;
 }
 
 #tagline {
@@ -129,7 +128,15 @@ header {
     color: var(--muted-text);
 }
 
-header, footer {
+header {
+    background-color: transparent;
+    color: var(--soft-text);
+    padding: 3rem var(--space-lg)var(--space-lg);
+    text-align: center;
+}
+
+
+footer {
     background-color: transparent;
     color: var(--soft-text);
     padding: var(--space-lg);
@@ -145,7 +152,6 @@ nav ul {
 
 nav a {
     padding-bottom: 0.25rem;
-    transition: 0.3s;
 }
 
 nav a:hover {
@@ -195,6 +201,11 @@ a {
     text-decoration: none;
 }
 
+/* Home Page Styles */
+
+.home-checkin-btn, button, nav a { transition 0.3s ease;
+}
+
 .home-checkin-btn {
     display: inline-block;
     background-color: var(--sky-blue);
@@ -207,22 +218,18 @@ a {
     background-color: var(--plum);
 }
 
-#checkin section {
-    margin-bottom: var(--space-xl);
-}
-
 /* create home screen "bubble" */
-.card {
+.bubble {
     position: relative;
     overflow: hidden;
     background-color: var(--glass);
     border: 1px solid var(--glass-border);
     padding: var(--space-xl);
-    border-radius: 50%;
-    box-shadow: 0 0 60px var(--glow-purple) inset 0 0 40px rgba(255, 255, 255, 0.08);
+    border-radius: var(--circle);
+    box-shadow: 0 0 60px var(--glow-purple), inset 0 0 40px rgba(255, 255, 255, 0.08);
     text-align: center;
-    width: 420px;
-    height: 420px;
+    width: 500px;
+    height: 500px;
     margin: var(--space-md) auto;
     display: flex;
     flex-direction: column;
@@ -233,19 +240,128 @@ a {
 }
 
 /* add bubble feel */
-.card::before {
+.bubble::before {
     content: "";
     position: absolute;
     width: 35%;
     height: 20%;
-    border-radius: 50%;
+    border-radius: var(--circle);
     top: 18%; 
     left: 18%;
     background-color: rgba(255, 255, 255, 0.12);
     filter: blur(8px);
 }
 
+.bubble h2, .bubble p, .bubble a {
+    position: relative;
+    z-index: 1;
+}
+
 #welcome p {
     max-width: 300px;
     margin-bottom: var(--space-md);
+}
+
+/* Checkin Page Styles */
+
+#checkin {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#checkin h2 {
+    margin-bottom: var(--space-lg);
+}
+
+#checkin section {
+    margin-bottom: var(--space-xl);
+}
+
+.step {
+    background-color: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    box-shadow: 0 0 40px var(--glow-blue);
+}
+
+.scale {
+    display: flex;
+    justify-self: space-between;
+    color: var(--muted-text);
+    margin-bottom: var(--space-sm);
+}
+
+input[type="range"] {
+    width: 100%;
+    margin: var(--space-md) 0;
+}
+
+/* Large circular color wheel/orb */
+
+#color-selection label {
+    display: block;
+    margin-bottom: var(--space-md);
+}
+ 
+input[type="color"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 220px;
+    height: 220px;
+    border: 3px solid var(--soft-text);
+    border-radius: var(--circle);
+    padding: 0;
+    overflow: hidden;
+    cursor: zoom-in;
+    background-color: transparent;
+    box-shadow: 0 0 30px var(--glow-blue);
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border: none;
+    border-radius: var(--circle);
+}
+
+input[type="color"]::-moz-color-swatch {
+    border: none;
+    border-radius: var(--circle);
+}
+
+.color-wheel {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    margin: var(--space-lg) auto;
+    border-radius: var(--circle);
+    background: conic-gradient(red, yellow, lime, cyan, blue, magenta, red);
+    box-shadow: 0 0 35px var(--glow-blue);
+    cursor: zoom-in;
+}
+
+.color-wheel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--circle);
+    background: radial-gradient(circle, rgba(255,255,255,0.55), transparent 65%);
+}
+
+.color-wheel input[type="color"] {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: zoom-in;
+    z-index: 2;
+}
+
+.hidden {
+    display: none;
 }
