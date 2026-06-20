@@ -160,7 +160,7 @@ nav a:hover {
 
 
 main {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: var(--space-lg);
 }
@@ -299,8 +299,6 @@ input[type="range"] {
     margin: var(--space-md) 0;
 }
 
-/* Large circular color wheel/orb */
-
 #color-selection label {
     display: block;
     margin-bottom: var(--space-md);
@@ -321,9 +319,10 @@ input[type="range"] {
 .color-wheel::after {
     content: "";
     position: absolute;
-    inset: 45;
+    inset: 45px;
     border-radius: var(--circle);
     background: radial-gradient(circle, rgba(255, 255, 255, 0.55), transparent 65%);
+    pointer-events: none;
 }
 
 .color-wheel input[type="hidden"] {
@@ -377,7 +376,7 @@ input[type="range"] {
 }
 
 #intensity-selection input[type="range"],
-    #energy-selection input[type="range"] {
+#energy-selection input[type="range"] {
         appearance: none;
         -webkit-appearance: none;
         height: 10px;
@@ -413,4 +412,107 @@ input[type="range"] {
     justify-content: space-between;
     color: var(--muted-text);
     margin-bottom: var(--space-lg);
+}
+
+
+/* History Styles */
+#history {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#emotion-map {
+    margin-top: var(--space-xl);
+    text-align: center;
+}
+
+.map-area {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    margin: var(--space-lg) auto;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    background-color: var(--glass);
+    box-shadow: 0 0 40px var(--glow-blue);
+}
+
+.map-area::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    width: 1px;
+    height: 80%;
+    background-color: var(--glass-border);
+}
+
+.map-area::after {
+    content: "";
+    position: absolute;
+    left: 10%;
+    top: 50%;
+    width: 80%;
+    height: 1px;
+    background-color: var(--glass-border);
+}
+
+.map-label {
+    position: absolute;
+    color: var(--muted-text);
+    font-size: 0.9rem;
+}
+
+.map-label.top {
+    top: var(--space-sm);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.map-label.bottom {
+    bottom: var(--space-sm);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.map-label.left {
+    left: var(--space-sm);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.map-label.right {
+    right: var(--space-sm);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.map-dot {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: var(--circle);
+    border: 2px solid var(--white);
+    box-shadow: 0 0 20px var(--glow-blue);
+    transform: translate(-50%, -50%);
+}
+
+.history-card {
+    background-color: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    box-shadow: 0 0 40px var(--glow-blue);
+    max-width: 400px;
+    margin:var(--space-lg);
+    margin: var(--space-lg) auto;
+}
+
+.history-color {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--circle);
+    margin: 0 auto var(--space-md);
+    border: 2px solid var(--white);
 }

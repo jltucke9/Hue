@@ -1,6 +1,16 @@
 "use strict";
 
-// color picker
+// helper functions 
+function getCheckins() {
+    return JSON.parse(localStorage.getItem("checkins")) || [];
+}
+
+function saveCheckins(checkins) {
+    localStorage.setItem("checkins", JSON.stringify(checkins));
+}
+
+// checkin page
+//  color selection
 function pickColor(e) {
     let colorWheel = document.querySelector(".color-wheel");
     let colorInput = document.getElementById("color-picker");
@@ -28,17 +38,19 @@ function pickColor(e) {
 }
 
 
-// show hidden checkin sections
+// intensity step
 function showIntensity() {
     document.getElementById("color-selection").classList.add("hidden");
     document.getElementById("intensity-selection").classList.remove("hidden");
 }
 
+// energy step
 function showEnergy() {
     document.getElementById("intensity-selection").classList.add("hidden");
     document.getElementById("energy-selection").classList.remove("hidden");
 }
 
+// intensity slider
 function updateIntensity() {
     let intensityInput = document.getElementById("intensity");
     let intensityValue = document.getElementById("intensity-value");
@@ -46,6 +58,7 @@ function updateIntensity() {
     intensityValue.innerHTML = intensityInput.value;
 }
 
+// energy slider
 function updateEnergy() {
     let energyInput = document.getElementById("energy");
     let energyValue = document.getElementById("energy-value");
@@ -53,34 +66,88 @@ function updateEnergy() {
     energyValue.innerHTML = energyInput.value;
 }
 
-
-
-// create save checkin
+// save check-in
 function saveCheckin() {
+
     let checkin = {
-        color: document.getElementById("color-picker").value, intensity: document.getElementById("intensity").value, energy: document.getElementById("energy").value
+        color: document.getElementById("color-picker").value, 
+        intensity: document.getElementById("intensity").value, 
+        energy: document.getElementById("energy").value,
+        date: new Date().toLocaleString()
     };
 
-    localStorage.setItem("latestCheckin", JSON.stringify(checkin));
+    let checkins = getCheckins();
+
+    checkins.push(checkin);
+
+    saveCheckins(checkins);
 
     window.location.href = "history.html";
 }
 
+// display history
 function displayHistory() {
-    let savedCheckin = localStorage.getItem("latestCheckin");
+    let historyList = document.getElementById("history-list");
 
-    if(savedCheckin) {
-        savedCheckin = JSON.parse(savedCheckin);
+    if(!historyList) {
+        return;
+    }
 
-        document.getElementById("history-list").innerHTML = 
-        "<p>Color&#58; " + savedCheckin.color + 
-        "</p>" + "<p>Intensity&#58; " + savedCheckin.intensity + "</p>" + "<p>Energy&#58; " + savedCheckin.energy + "</p>";
+    let checkins = getCheckins();
+    historyList.innerHTML = "";
+
+    for (let checkin of checkins) {
+        let card = document.createElement("div");
+        card.classList.add("history-card");
+
+        card.innerHTML = 
+            `<div class="history-color" style="background-color: ${checkin.color};"></div>
+            <p><strong>Intensity:</strong> ${checkin.intensity}</p>
+            <p><strong>Energy:</strong> ${checkin.energy}</p>
+            <p>${checkin.date}</p>`;
+
+        historyList.appendChild(card);
+    }
+}
+
+/* Emotional Map */
+function displayMap() {
+    let checkins = getCheckins();
+    let mapArea = document.querySelector(".map-area");
+
+    if (!mapArea) {
+        return;
+    }
+
+    for(let checkin of checkins) {
+        let mapDot = document.createElement("div");
+
+        // convert saved values from strings to numbers
+        let intensity = Number(checkin.intensity);
+        let energy = Number(checkin.energy);
+        
+        // convert 0-10 scale values into map coordinates
+        let xPosition = 10 + (intensity * 8);
+        let yPosition = 90 - (energy * 8);
+
+        mapDot.classList.add("map-dot");
+
+        mapDot.style.left = xPosition + "%";
+        mapDot.style.top = yPosition + "%";
+        mapDot.style.backgroundColor = checkin.color;
+
+        mapDot.title = "Intensity: " + intensity + " | Energy: " + energy;
+
+        mapDot.addEventListener("click", function() {
+            alert("Intensity: " + intensity + "\nEnergy: " + energy);
+        });
+
+        mapArea.appendChild(mapDot);
     }
 }
 
 
-
-// event handlers
+// event listeners
 if(document.getElementById("color-next-btn")) {
     document.getElementById("color-next-btn").addEventListener("click", showIntensity);
 }
@@ -105,6 +172,6 @@ if(document.getElementById("save-checkin-btn")) {
    document.getElementById("save-checkin-btn").addEventListener("click", saveCheckin); 
 }
 
-if(document.getElementById("history-list")) {
-    displayHistory();
+if(document.querySelector(".map-area")) {
+    displayMap();
 }
