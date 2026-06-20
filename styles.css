@@ -1,3 +1,7 @@
+/* CSS by Jeanne Tucker */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap');
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -49,16 +53,27 @@ table {
 
 :root {
     --eggshell: #E8E6E1;
+    --midnight: #0F1424;
+    --deep-navy: #111A2E;
     --blue: #223C6A;
     --sky-blue: #5C7BA6;
     --dusty-teal: #869CA4;
     --plum: #6E6884;
+
+    --glass: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.18);
+    --glow-purple: rgba(110, 104, 132, 0.45);
+    --glow-blue: rgba(92, 123, 166, 0.35);
+
+    --soft-text: #D8DDF0;
+    --muted-text: #94A8C3;
 
     --white: #F5F5F5;
     --charcoal: #2A2A2A;
     --black: #1A1A1A;
 
     --font-main: Arial, Helvetica, sans-serif;
+    --font-header: "Cormorant Garamond", serif;
 
     /* Spacing */
     --space-sm: 0.5rem;
@@ -73,23 +88,52 @@ table {
 
     /* Shadow */
     --shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+
 }
 
 * {
     box-sizing: border-box;
 }
 
+.skip {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.skip:focus {
+  position: static;
+  width: auto;
+  height: auto;
+}
+
 body {
-    background-color: var(--eggshell);
-    color: var(--charcoal);
+    background-color: var(--midnight);
+    color: var(--soft-text);
     font-family: var(--font-main);
     line-height: 1.5;
+    min-height: 100vh;
+}
+
+header {
+    padding: 3rem;;
+}
+
+#tagline {
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-lg);
+    color: var(--muted-text);
 }
 
 header, footer {
-    background-color: var(--blue);
-    color: var(--white);
-    pad: var(--space-lg);
+    background-color: transparent;
+    color: var(--soft-text);
+    padding: var(--space-lg);
+    text-align: center;
 }
 
 nav ul {
@@ -99,16 +143,47 @@ nav ul {
     margin-top: var(--space-md);
 }
 
+nav a {
+    padding-bottom: 0.25rem;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: var(--sky-blue);
+}
+
+
 main {
     max-width: 900px;
     margin: 0 auto;
     padding: var(--space-lg);
 }
 
+h1, h2 {
+    font-family: var(--font-header);
+}
+
+h1 {
+    font-size: 4rem;;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 3rem;
+    margin-bottom: var(--space-md);
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-sm);
+}
+
 button {
     background-color: var(--sky-blue);
     color: var(--white);
     border-radius: var(--radius-md);
+    border: none;
+    cursor: pointer;
 }
 
 button:hover {
@@ -124,11 +199,53 @@ a {
     display: inline-block;
     background-color: var(--sky-blue);
     color: var(--white);
-    padding: 0.75rem 1rem;
-    border-radius: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius-lg);
 }
 
 .home-checkin-btn:hover {
     background-color: var(--plum);
 }
 
+#checkin section {
+    margin-bottom: var(--space-xl);
+}
+
+/* create home screen "bubble" */
+.card {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--glass);
+    border: 1px solid var(--glass-border);
+    padding: var(--space-xl);
+    border-radius: 50%;
+    box-shadow: 0 0 60px var(--glow-purple) inset 0 0 40px rgba(255, 255, 255, 0.08);
+    text-align: center;
+    width: 420px;
+    height: 420px;
+    margin: var(--space-md) auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: radial-gradient(circle at 30% 20%,
+ rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.05) 35%, rgba(92, 123, 166, 0.12) 65%, rgba(110, 104, 132, 0.2));
+}
+
+/* add bubble feel */
+.card::before {
+    content: "";
+    position: absolute;
+    width: 35%;
+    height: 20%;
+    border-radius: 50%;
+    top: 18%; 
+    left: 18%;
+    background-color: rgba(255, 255, 255, 0.12);
+    filter: blur(8px);
+}
+
+#welcome p {
+    max-width: 300px;
+    margin-bottom: var(--space-md);
+}
