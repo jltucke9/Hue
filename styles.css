@@ -85,7 +85,7 @@ table {
     --radius-sm: 0.25rem;
     --radius-md: 0.5rem;
     --radius-lg: 1rem;
-    --circle: 50%
+    --circle: 50%;
 
     /* Shadow */
     --shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
@@ -131,7 +131,7 @@ body {
 header {
     background-color: transparent;
     color: var(--soft-text);
-    padding: 3rem var(--space-lg)var(--space-lg);
+    padding: 3rem var(--space-lg) var(--space-lg);
     text-align: center;
 }
 
@@ -203,7 +203,8 @@ a {
 
 /* Home Page Styles */
 
-.home-checkin-btn, button, nav a { transition 0.3s ease;
+.home-checkin-btn, button, nav a { 
+    transition: 0.3s ease;
 }
 
 .home-checkin-btn {
@@ -288,7 +289,7 @@ a {
 
 .scale {
     display: flex;
-    justify-self: space-between;
+    justify-content: space-between;
     color: var(--muted-text);
     margin-bottom: var(--space-sm);
 }
@@ -304,34 +305,6 @@ input[type="range"] {
     display: block;
     margin-bottom: var(--space-md);
 }
- 
-input[type="color"] {
-    appearance: none;
-    -webkit-appearance: none;
-    width: 220px;
-    height: 220px;
-    border: 3px solid var(--soft-text);
-    border-radius: var(--circle);
-    padding: 0;
-    overflow: hidden;
-    cursor: zoom-in;
-    background-color: transparent;
-    box-shadow: 0 0 30px var(--glow-blue);
-}
-
-input[type="color"]::-webkit-color-swatch-wrapper {
-    padding: 0;
-}
-
-input[type="color"]::-webkit-color-swatch {
-    border: none;
-    border-radius: var(--circle);
-}
-
-input[type="color"]::-moz-color-swatch {
-    border: none;
-    border-radius: var(--circle);
-}
 
 .color-wheel {
     position: relative;
@@ -339,6 +312,7 @@ input[type="color"]::-moz-color-swatch {
     height: 260px;
     margin: var(--space-lg) auto;
     border-radius: var(--circle);
+    overflow: hidden;
     background: conic-gradient(red, yellow, lime, cyan, blue, magenta, red);
     box-shadow: 0 0 35px var(--glow-blue);
     cursor: zoom-in;
@@ -349,7 +323,7 @@ input[type="color"]::-moz-color-swatch {
     position: absolute;
     inset: 0;
     border-radius: var(--circle);
-    background: radial-gradient(circle, rgba(255,255,255,0.55), transparent 65%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.55), transparent 65%);
 }
 
 .color-wheel input[type="color"] {
@@ -362,6 +336,37 @@ input[type="color"]::-moz-color-swatch {
     z-index: 2;
 }
 
+.magnifier {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    border: 3px solid var(--charcoal);
+    border-radius: var(--circle);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    pointer-events: none;
+}
+
+.magnifier::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 3px; 
+    background-color: var(--charcoal);
+    right: -9px;
+    bottom: -2px;
+    transform: rotate(45deg);
+    border-radius: 999px;
+}
+
 .hidden {
     display: none;
+}
+
+#checkin button {
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius-lg);
+    font-size: 1rem;
 }
