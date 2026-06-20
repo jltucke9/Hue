@@ -1,0 +1,134 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+:root {
+    --eggshell: #E8E6E1;
+    --blue: #223C6A;
+    --sky-blue: #5C7BA6;
+    --dusty-teal: #869CA4;
+    --plum: #6E6884;
+
+    --white: #F5F5F5;
+    --charcoal: #2A2A2A;
+    --black: #1A1A1A;
+
+    --font-main: Arial, Helvetica, sans-serif;
+
+    /* Spacing */
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 2rem;
+    --space-xl: 4rem;
+
+    /* Border Radius */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 1rem;
+
+    /* Shadow */
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--eggshell);
+    color: var(--charcoal);
+    font-family: var(--font-main);
+    line-height: 1.5;
+}
+
+header, footer {
+    background-color: var(--blue);
+    color: var(--white);
+    pad: var(--space-lg);
+}
+
+nav ul {
+    display: flex;
+    gap: var(--space-lg);
+    justify-content: center;
+    margin-top: var(--space-md);
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--space-lg);
+}
+
+button {
+    background-color: var(--sky-blue);
+    color: var(--white);
+    border-radius: var(--radius-md);
+}
+
+button:hover {
+    background-color: var(--plum);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.home-checkin-btn {
+    display: inline-block;
+    background-color: var(--sky-blue);
+    color: var(--white);
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+}
+
+.home-checkin-btn:hover {
+    background-color: var(--plum);
+}
+
