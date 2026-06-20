@@ -31,7 +31,12 @@
                     <label for="color-picker">Choose your mood color</label>
 
                     <div class="color-wheel">
-                        <input type="color" id="color-picker"><span class="magnifier"></span>
+                        <input type="hidden" id="color-picker" value="#79D294"><span class="magnifier"></span>
+                    </div>
+
+                    <div class="selected-color">
+                        <span id="selected-color-swatch"></span>
+                        <span id="selected-color-text">Selected color</span>
                     </div>
                     
                     <button type="button" id="color-next-btn">Next</button>

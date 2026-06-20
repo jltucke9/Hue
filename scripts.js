@@ -1,5 +1,33 @@
 "use strict";
 
+// color picker
+function pickColor(e) {
+    let colorWheel = document.querySelector(".color-wheel");
+    let colorInput = document.getElementById("color-picker");
+    let colorSelector = document.querySelector(".magnifier");
+    let colorSwatch = document.getElementById("selected-color-swatch");
+
+    let rect = colorWheel.getBoundingClientRect();
+
+    let x = e.clientX - rect.left;
+    let y = e.clientY - rect.top;
+
+    let centerX = rect.width / 2;
+    let centerY = rect.height / 2;
+
+    let angle = Math.atan2(y - centerY, x - centerX);
+    let hue = Math.round((angle * 180 / Math.PI + 90 + 360) % 360);
+
+    let color = "hsl(" + hue + ", 100%, 60%)";
+
+    colorInput.value = color;
+    colorSwatch.style.backgroundColor = color;
+
+    colorSelector.style.left = x + "px";
+    colorSelector.style.top = y + "px";
+}
+
+
 // show hidden checkin sections
 function showIntensity() {
     document.getElementById("color-selection").classList.add("hidden");
@@ -55,6 +83,10 @@ function displayHistory() {
 // event handlers
 if(document.getElementById("color-next-btn")) {
     document.getElementById("color-next-btn").addEventListener("click", showIntensity);
+}
+
+if(document.querySelector(".color-wheel")) {
+    document.querySelector(".color-wheel").addEventListener("click", pickColor);
 }
 
 if(document.getElementById("intensity-next-btn")) {
