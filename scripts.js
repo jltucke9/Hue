@@ -11,13 +11,9 @@ function saveCheckins(checkins) {
 
 // checkin page
 //  color selection
-function pickColor(e) {
+function getColorFromWheel(e) {
     let colorWheel = document.querySelector(".color-wheel");
-    let colorInput = document.getElementById("color-picker");
-    let colorSelector = document.querySelector(".magnifier");
-    let colorSwatch = document.getElementById("selected-color-swatch");
-
-    let rect = colorWheel.getBoundingClientRect();
+    let rect = colorWheel.getBoundingClientRect();    
 
     let x = e.clientX - rect.left;
     let y = e.clientY - rect.top;
@@ -28,13 +24,36 @@ function pickColor(e) {
     let angle = Math.atan2(y - centerY, x - centerX);
     let hue = Math.round((angle * 180 / Math.PI + 90 + 360) % 360);
 
-    let color = "hsl(" + hue + ", 100%, 60%)";
+    return {
+        color: "hsl(" + hue + ", 100%, 60%)",
+        x: x,
+        y: y
+    };
+}
 
-    colorInput.value = color;
-    colorSwatch.style.backgroundColor = color;
+function previewColor(e) {
+    let colorSelector = document.querySelector(".magnifier");
+    let colorData = getColorFromWheel(e);
+    
+    colorSelector.style.left = colorData.x + "px";
+    colorSelector.style.top = colorData.y + "px";    
+}
 
-    colorSelector.style.left = x + "px";
-    colorSelector.style.top = y + "px";
+function pickColor(e) {
+    let colorInput = document.getElementById("color-picker");
+    let colorSwatch = document.getElementById("selected-color-swatch");
+    let selectedColorDisplay = document.getElementById("selected-color-display");
+    let colorNextButton = document.getElementById("color-next-btn");
+    
+    let colorData = getColorFromWheel(e);
+
+    previewColor(e);
+
+    colorInput.value = colorData.color;
+    colorSwatch.style.backgroundColor = colorData.color;
+
+    selectedColorDisplay.classList.add("visible");
+    colorNextButton.disabled = false;
 }
 
 
@@ -153,6 +172,7 @@ if(document.getElementById("color-next-btn")) {
 }
 
 if(document.querySelector(".color-wheel")) {
+    document.querySelector(".color-wheel").addEventListener("mousemove", previewColor);
     document.querySelector(".color-wheel").addEventListener("click", pickColor);
 }
 

@@ -51,7 +51,10 @@ table {
 	border-spacing: 0;
 }
 
+
+/* --------- root variables ---------- */
 :root {
+    /* colors */
     --eggshell: #E8E6E1;
     --midnight: #0F1424;
     --deep-navy: #111A2E;
@@ -60,20 +63,23 @@ table {
     --dusty-teal: #869CA4;
     --plum: #6E6884;
 
+    /* glass colors */
     --glass: rgba(255, 255, 255, 0.08);
     --glass-border: rgba(255, 255, 255, 0.18);
     --glow-purple: rgba(110, 104, 132, 0.45);
     --glow-blue: rgba(92, 123, 166, 0.35);
 
-    --soft-text: #D8DDF0;
-    --muted-text: #94A8C3;
-
     --white: #F5F5F5;
     --charcoal: #2A2A2A;
     --black: #1A1A1A;
 
+    /* fonts */
     --font-main: Arial, Helvetica, sans-serif;
     --font-header: "Cormorant Garamond", serif;
+
+    /* font colors */
+    --soft-text: #D8DDF0;
+    --muted-text: #94A8C3;
 
     /* Spacing */
     --space-sm: 0.5rem;
@@ -97,6 +103,32 @@ table {
     box-sizing: border-box;
 }
 
+body {
+    background:
+        radial-gradient(circle at top center, rgba(92,123,166,0.15), transparent 50%), var(--midnight);
+    background-color: var(--midnight);
+    color: var(--soft-text);
+    font-family: var(--font-main);
+    line-height: 1.5;
+    min-height: 100vh;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-lg);
+}
+
+.hidden {
+    display: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* -------- Accessibility ---------- */
 .skip {
   position: absolute;
   left: -10000px;
@@ -112,29 +144,15 @@ table {
   height: auto;
 }
 
-body {
-    background:
-        radial-gradient(circle at top center, rgba(92,123,166,0.15), transparent 50%), var(--midnight);
-    background-color: var(--midnight);
-    color: var(--soft-text);
-    font-family: var(--font-main);
-    line-height: 1.5;
-    min-height: 100vh;
-}
-
-#tagline {
-    margin-top: var(--space-sm);
-    margin-bottom: var(--space-lg);
-    color: var(--muted-text);
-}
-
+/* -------- Layout --------- */
 header {
+    max-width: 1200px;
     background-color: transparent;
     color: var(--soft-text);
-    padding: 3rem var(--space-lg) var(--space-lg);
+    padding: 2rem 2rem 1rem;
     text-align: center;
+    margin: 0 auto;
 }
-
 
 footer {
     background-color: transparent;
@@ -145,7 +163,7 @@ footer {
 
 nav ul {
     display: flex;
-    gap: var(--space-lg);
+    gap: 3rem;
     justify-content: center;
     margin-top: var(--space-md);
 }
@@ -158,13 +176,14 @@ nav a:hover {
     color: var(--sky-blue);
 }
 
-
-main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: var(--space-lg);
+nav a.active {
+    color: var(--white);
+    border-bottom: none;
+    position: relative;
 }
 
+
+/* -------- Typography --------- */
 h1, h2 {
     font-family: var(--font-header);
 }
@@ -184,6 +203,17 @@ h3 {
     margin-bottom: var(--space-sm);
 }
 
+#tagline {
+    font-size: 1.15rem;
+    font-weight: 400;
+    opacity: .85;
+    margin-top: 0.25rem;
+    margin-bottom: 1.5rem;
+    color: var(--muted-text);
+}
+
+
+/* ------- Buttons */
 button {
     background-color: var(--sky-blue);
     color: var(--white);
@@ -196,13 +226,6 @@ button:hover {
     background-color: var(--plum);
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-/* Home Page Styles */
-
 .home-checkin-btn, button, nav a { 
     transition: 0.3s ease;
 }
@@ -211,36 +234,71 @@ a {
     display: inline-block;
     background-color: var(--sky-blue);
     color: var(--white);
-    padding: 0.75rem 1.25rem;
-    border-radius: var(--radius-lg);
+    padding: 0.85rem 2rem;
+    border-radius: 999px;
+    font-weight: 600;
 }
 
 .home-checkin-btn:hover {
     background-color: var(--plum);
 }
 
-/* create home screen "bubble" */
+#checkin button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: 0.85rem 2.25rem;
+    border-radius: 999px;
+    font-size: 1rem;
+    background: linear-gradient(135deg, var(--sky-blue), var(--plum));
+    box-shadow: 0 0 25px rgba(92, 123, 166, 0.35);
+}
+
+#color-next-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+/* -------- Animation ---------- */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* --------- Home Page ----------- */
 .bubble {
     position: relative;
     overflow: hidden;
-    background-color: var(--glass);
+    background-color: rgba(255, 255, 255, 0.06);
     border: 1px solid var(--glass-border);
     padding: var(--space-xl);
     border-radius: var(--circle);
-    box-shadow: 0 0 60px var(--glow-purple), inset 0 0 40px rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 90px rgba(92,123,166,.18), 0 0 50px rgba(110,104,132,.15), inset 0 0 40px rgba(255,255,255,.08);
     text-align: center;
-    width: 500px;
-    height: 500px;
-    margin: var(--space-md) auto;
+    width: 540px;
+    height: 540px;
+    margin: -1.5rem auto 4rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-image: radial-gradient(circle at 30% 20%,
  rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.05) 35%, rgba(92, 123, 166, 0.12) 65%, rgba(110, 104, 132, 0.2));
+    animation: float 8s ease-in-out infinite;
 }
 
-/* add bubble feel */
+.bubble h2 {
+    font-size: 3.4rem;
+    margin-bottom: 1rem;
+}
+
 .bubble::before {
     content: "";
     position: absolute;
@@ -259,20 +317,20 @@ a {
 }
 
 #welcome p {
-    max-width: 300px;
-    margin-bottom: var(--space-md);
+    max-width: 340px;
+    margin-bottom: 1.5rem;
 }
 
-/* Checkin Page Styles */
+/* --------- Check-In Page ---------- */
 
 #checkin {
-    max-width: 700px;
+    max-width: 900px;
     margin: 0 auto;
     text-align: center;
 }
 
 #checkin h2 {
-    margin-bottom: var(--space-lg);
+    margin-bottom: 1.5rem;
 }
 
 #checkin section {
@@ -283,37 +341,27 @@ a {
     background-color: var(--glass);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-lg);
-    padding: var(--space-xl);
+    padding: 2rem 4rem 2.25rem;
     box-shadow: 0 0 40px var(--glow-blue);
 }
 
-.scale {
-    display: flex;
-    justify-content: space-between;
-    color: var(--muted-text);
-    margin-bottom: var(--space-lg);
-}
-
-input[type="range"] {
-    width: 100%;
-    margin: var(--space-md) 0;
-}
-
+/* -------- Color Picker --------- */
 #color-selection label {
+    max-width: 600px;
     display: block;
-    margin-bottom: var(--space-md);
+    margin: 0 auto 1.25rem;
 }
 
 .color-wheel {
     position: relative;
-    width: 260px;
-    height: 260px;
-    margin: var(--space-lg) auto;
+    width: 300px;
+    height: 300px;
+    margin: 1.5rem auto;
     border-radius: var(--circle);
     overflow: hidden;
     background: conic-gradient(red, yellow, lime, cyan, blue, magenta, red);
     box-shadow: 0 0 35px var(--glow-blue);
-    cursor: crosshair;
+    cursor: none;
 }
 
 .color-wheel::after {
@@ -351,6 +399,14 @@ input[type="range"] {
     gap: var(--space-sm);
     margin-bottom: var(--space-md);
     color: var(--muted-text);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease;
+}
+
+.selected-color.visible {
+    opacity: 1;
+    visibility: visible;
 }
 
 #selected-color-swatch {
@@ -361,18 +417,35 @@ input[type="range"] {
     border: 2px solid var(--glass-border);
 }
 
-.hidden {
-    display: none;
+/* -------- Sliders -------- */
+.scale {
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted-text);
+    margin-top: 1.5rem;
+    margin-bottom: 4rem;
 }
 
-#checkin button {
-    padding: 0.75rem 1.25rem;
-    border-radius: var(--radius-lg);
-    font-size: 1rem;
+input[type="range"] {
+    width: 100%;
+    margin: var(--space-md) 0 0;
+}
+
+#intensity-selection h2, #energy-selection h2 {
+    margin-bottom: 2.5rem;
+}
+
+#intensity-selection h3, #energy-selection h3 {
+    margin-bottom: 2rem;
 }
 
 #intensity-selection p, #energy-selection p {
     margin-bottom: var(--space-lg);
+}
+
+#intensity-selection label, #energy-selection label {
+    display: block;
+    margin-bottom: 1rem;
 }
 
 #intensity-selection input[type="range"],
@@ -381,25 +454,29 @@ input[type="range"] {
         -webkit-appearance: none;
         height: 10px;
         border-radius: 999px;
+        display: block;
+        margin: var(--space-md) auto 0;
         background: linear-gradient(to right, #5C8DFF, #D65BAA);
         box-shadow: 0 0 20px var(--glow-blue);
+        width: 95%;
 }
 
 #intensity-selection input[type="range"]::-webkit-slider-thumb, #energy-selection input[type="range"]::-webkit-slider-thumb {
     appearance: none;
     -webkit-appearance: none;
-    width: 34px;
-    height: 34px;
+    width: 30px;
+    height: 30px;
     border-radius: var(--circle);
     background-color: transparent;
     border: 3px solid var(--white);
     box-shadow: 0 0 18px var(--glow-blue);
     cursor: pointer;
+
 }
 
 #intensity-selection input[type="range"]::-moz-range-thumb, #energy-selection input[type="range"]::-moz-range-thumb {
-    width: 34px;
-    height: 34px;
+    width: 30px;
+    height: 30px;
     border-radius: var(--circle);
     background-color: transparent;
     border: 3px solid var(--white);
@@ -407,23 +484,28 @@ input[type="range"] {
     cursor: pointer;
 }
 
-.scale-numbers {
-    display: flex;
-    justify-content: space-between;
-    color: var(--muted-text);
-    margin-bottom: var(--space-lg);
-}
-
-
-/* History Styles */
+/* -------- History Styles -------- */
 #history {
     max-width: 900px;
     margin: 0 auto;
     text-align: center;
 }
 
-#emotion-map {
-    margin-top: var(--space-xl);
+#history h2 {
+    margin-bottom: var(--space-sm);
+}
+
+#history p {
+    color: var(--muted-text);
+    margin-bottom: 0;
+}
+
+#history-list {
+    display: none;
+}
+
+/* -------- Emotional Map -------- */
+#emotional-map {
     text-align: center;
 }
 
@@ -431,11 +513,16 @@ input[type="range"] {
     position: relative;
     width: 500px;
     height: 500px;
-    margin: var(--space-lg) auto;
+    margin: var(--space-lg) auto 1.5rem;
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-lg);
     background-color: var(--glass);
     box-shadow: 0 0 40px var(--glow-blue);
+}
+
+#emotional-map > p {
+    color: var(--muted-text);
+    margin-top: 0;
 }
 
 .map-area::before {
@@ -498,6 +585,7 @@ input[type="range"] {
     transform: translate(-50%, -50%);
 }
 
+/* -------- History Cards -------- */
 .history-card {
     background-color: var(--glass);
     border: 1px solid var(--glass-border);
