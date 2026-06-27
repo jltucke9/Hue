@@ -158,7 +158,10 @@ function displayMap() {
         mapDot.title = "Intensity: " + intensity + " | Energy: " + energy;
 
         mapDot.addEventListener("click", function() {
-            alert("Intensity: " + intensity + "\nEnergy: " + energy);
+            document.getElementById("detail-color").style.backgroundColor = checkin.color;
+            document.getElementById("detail-intensity").textContent = intensity;
+            document.getElementById("detail-energy").textContent = energy;
+            document.getElementById("detail-date").textContent = checkin.date;
         });
 
         mapArea.appendChild(mapDot);

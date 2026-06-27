@@ -15,9 +15,7 @@
     </head>
     <body>
         <header>
-            <!-- <h1><a href="index.html">Hue</a></h1> -->
             <nav aria-label="Main Navigation">
-                <!-- <p id="tagline">Explore your inner spectrum!</p> -->
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="checkin.html" class="active">Check&#45;In</a></li>
@@ -27,9 +25,9 @@
         </header>
         <main id="main">
             <section id="checkin">
-                <h2>Check&#45;In</h2>
+                <h1>Check&#45;In</h1>
                 <section class="step" id="color-selection">
-                    <h3>What color are you feeling right now?</h3>
+                    <h2>What color are you feeling right now?</h2>
 
                     <label for="color-picker">Choose the color that feels right to you.</label>
 
@@ -48,8 +46,6 @@
                 <section class="step hidden" id="intensity-selection">
                     <h3>How intense does this feeling feel?</h3>
                     <p class="helper-text">Use the slider to show how strong this feeling is right now.</p>
-
-                    <label for="intensity">Intensity Scale</label>
                     
                     <input type="range" id="intensity" min="0" max="10" value="5">
                     
@@ -71,8 +67,6 @@
                 <section class="step hidden" id="energy-selection">
                     <h3>How much energy do you have?</h3>
                     <p class="helper-text">Use the slider to show how much energy you have right now.</p>
-                    
-                    <label for="energy">Energy Scale</label>
 
                     <input type="range" id="energy" min="0" max="10" value="5">
              

@@ -13,9 +13,7 @@
     </head>
     <body>
         <header>
-            <!-- <h1><a href="index.html">Hue</a></h1> -->
-            <nav aria-label="Main Navigation">
-                <p id="tagline">Explore your inner spectrum!</p>
+            <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="checkin.html">Check&#45;In</a></li>
@@ -25,19 +23,36 @@
         </header>
         <main id="main">
             <section id="history">
-                <h2>Check&#45;In History</h2>
-                <p>View your previous check-ins on the emotional map below.</p>
+                <h1>History</h1>
+                <p>Your emotional map shows how your color check&#45;ins relate to intensity and energy.</p>
                 <div id="history-list">
                 </div>
             </section>
             <section id="emotional-map">
                 <div class="map-area">
-                    <span class="map-label top">Energized</span>
-                    <span class="map-label bottom">Exhausted</span>
-                    <span class="map-label left">Calm</span>
-                    <span class="map-label right">Overwhelmed</span>
+                    <span class="map-label top">High Energy</span>
+                    <span class="map-label bottom">Low Energy</span>
+                    <span class="map-label left">Low Intensity</span>
+                    <span class="map-label right">High Intensity</span>
                 </div>
-                <p>Click a dot on the map to view details.</p>
+            </section>
+            <section class="checkin-details">
+                <h2>Selected Check&#45;In</h2>
+                <div class="details-color">
+                    <span id="detail-color"></span>
+                </div>
+
+                <div class="details-grid">
+                    <div>
+                        <span class="detail-label">Intensity</span>
+                        <p id="detail-intensity">--</p>
+                    </div>
+                    <div>
+                        <span class="detail-label">Energy</span>
+                        <p id="detail-energy">--</p>
+                    </div>
+                </div>
+                <p id="detail-date">Select a check-in to view details</p>
             </section>
         </main>
         <footer>
