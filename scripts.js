@@ -110,7 +110,16 @@ function saveCheckin() {
 
     saveCheckins(checkins);
 
-    window.location.href = "history.html";
+    fetch("/api/reflections", {
+        method: "POST"
+    })
+    .then(function() {
+        window.location.href = "history.html";
+    })
+    .catch(function(error) {
+        console.log("Reflection count could not update:", error);
+        window.location.href = "history.html";
+    });
 }
 
 // display history
@@ -183,6 +192,28 @@ function displayMap() {
         mapArea.appendChild(mapDot);
     }
 }
+
+function displayReflectionCount() {
+    let counter = document.getElementById("reflection-counter");
+
+    if(!counter) {
+        return;
+    }
+
+    fetch("/api/reflections")
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            counter.textContent = "Total Hue Reflections: " + data.totalReflections;
+        })
+        .catch(function(error) {
+            counter.textContent = "Total Hue Reflections: --";
+            console.log("Reflection count could not load:", error)
+        });
+}
+
+displayReflectionCount();
 
 
 // event listeners

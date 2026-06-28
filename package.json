@@ -1,0 +1,24 @@
+{
+  "name": "hue",
+  "version": "1.0.0",
+  "description": "Color-based internal check-in system.",
+  "main": "scripts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jltucke9/Hue.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jltucke9/Hue/issues"
+  },
+  "homepage": "https://github.com/jltucke9/Hue#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
