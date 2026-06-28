@@ -98,7 +98,7 @@ function saveCheckin() {
             year: "numeric",
             hour: "numeric",
             minute: "2-digit"
-        })
+        }).replace(",", "at")
     };
 
     let checkins = getCheckins();

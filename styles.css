@@ -158,7 +158,7 @@ header {
 footer {
     background-color: transparent;
     color: var(--soft-text);
-    padding: var(--space-lg);
+    padding: var(--space-sm);
     text-align: center;
 }
 
@@ -758,4 +758,61 @@ input[type="range"] {
     border-radius: var(--circle);
     margin: 0 auto var(--space-md);
     border: 2px solid var(--white);
+}
+
+/* -------- Responsive Styles -------- */
+@media screen and (max-width: 920px) {
+    main {
+        padding: 1rem;
+    }
+
+    nav ul {
+        gap: 1.5rem;
+    }
+
+    h1 {
+        font-size: 3.25rem;;
+    }
+
+    .bubble {
+        width: 360px;
+        height: 360px;
+        padding: 2rem;
+    }
+
+    .bubble h2 {
+        font-size: 2.4rem;
+    }
+
+    .step {
+        padding: 2rem 1.5rem;
+    }
+
+    .color-wheel {
+        width: 250px;
+        height: 250px;
+    }
+
+    .history-layout {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    #emotional-map {
+        max-width: 100%;
+    }
+
+    .map-area {
+        width: 90vw;
+        max-width: 500px;
+        height: 90vw;
+        max-height: 500px;
+    }
+
+    .checkin-details {
+        width: 90vw;
+        max-width: 420px;
+        min-height: auto;
+    }
 }
