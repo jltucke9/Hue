@@ -117,7 +117,7 @@ body {
 main {
     max-width: 1200px;
     margin: 0 auto;
-    padding: var(--space-lg);
+    padding: var(--space-sm) var(--space-lg);
 }
 
 .hidden {
@@ -454,7 +454,7 @@ input[type="range"] {
     color: var(--muted-text);
     margin: 0 auto 3rem;
     max-width: 560px;
-    color: rgba(216, 221, 2440, .70);
+    color: rgba(216, 221, 244, .70);
     font-size: 1rem;
     padding-bottom: var(--space-sm);
     line-height: 1.7;
@@ -542,31 +542,49 @@ input[type="range"] {
     text-align: center;
 }
 
+#history h1 {
+    font-size: 4.5rem;
+}
+
 #history h2 {
     margin-bottom: var(--space-sm);
 }
 
 #history p {
+    max-width: 650px;
     color: var(--muted-text);
-    margin-bottom: 0;
+    margin: 0 auto;
 }
 
 #history-list {
     display: none;
 }
 
+.history-layout {
+    display:flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    max-width: 1050px;
+    margin: 2.5rem auto;
+}
+
 /* -------- Check-In Details ---------- */
 .checkin-details {
-    width: 500px;
-    margin: 2.5rem auto;
-    padding: var(--space-lg);
+    min-height: 460px;
+    width: 340px;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 2rem 1.75rem;
     text-align: center;
-    background: var(--surface);
+    background: var(--glass);
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: var(--radius-lg);
 }
 
 .checkin-details h2 {
+    font-size: 1.85rem;
+    line-height: 1.1;
     margin-bottom: 1.5rem;
 }
 
@@ -574,23 +592,37 @@ input[type="range"] {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: .75;
+    gap: .75rem;
     margin-bottom: 1.75rem;
 }
 
 #detail-color {
-    width: 60px;
-    height: 60px;
+    width: 72px;
+    height: 72px;
     border-radius: var(--circle);
     background: transparent;
     border: 3px solid rgba(255, 255, 255, 0.25);
-    margin: 0 auto 1.5rem;
+    margin: 1.75rem auto;
 }
 
 .details-grid {
     display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 2rem 0;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1.5rem 0;
+    font-size: 3rem;
+    position: relative;
+}
+
+.details-grid::before {
+    content: "";
+    width: 1px;
+    height: 90px;
+    background-color: var(--glass-border);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .detail-label {
@@ -609,19 +641,30 @@ input[type="range"] {
 }
 
 #detail-date {
+    font-size: 0.8rem;
+    opacity: .65;
+    margin-top: 1.5rem;
     color: var(--muted-text);
+}
+
+.map-help {
+
+    text-align: center;
+    color: var(--muted-text);
+    font-size: 0.95rem;
 }
 
 /* -------- Emotional Map -------- */
 #emotional-map {
-    text-align: center;
+    flex: 1;
+    max-width: 700px;
 }
 
 .map-area {
     position: relative;
-    width: 500px;
-    height: 500px;
-    margin: var(--space-lg) auto 1.5rem;
+    width: 560px;
+    height: 560px;
+    margin: 0 auto 1rem;
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-lg);
     background-color: var(--glass);
@@ -637,18 +680,18 @@ input[type="range"] {
     content: "";
     position: absolute;
     left: 50%;
-    top: 10%;
+    top: 9%;
     width: 1px;
-    height: 80%;
+    height: 85%;
     background-color: var(--glass-border);
 }
 
 .map-area::after {
     content: "";
     position: absolute;
-    left: 10%;
+    left: 20.5%;
     top: 50%;
-    width: 80%;
+    width: 58%;
     height: 1px;
     background-color: var(--glass-border);
 }
@@ -656,7 +699,9 @@ input[type="range"] {
 .map-label {
     position: absolute;
     color: var(--muted-text);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: var(--space-md);
 }
 
 .map-label.top {
@@ -669,12 +714,14 @@ input[type="range"] {
     bottom: var(--space-sm);
     left: 50%;
     transform: translateX(-50%);
+    padding: 0 0.35rem;
 }
 
 .map-label.left {
-    left: var(--space-sm);
+    left: var(--space-md);
     top: 50%;
     transform: translateY(-50%);
+    padding: 0 0.35rem;
 }
 
 .map-label.right {

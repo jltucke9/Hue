@@ -92,7 +92,13 @@ function saveCheckin() {
         color: document.getElementById("color-picker").value, 
         intensity: document.getElementById("intensity").value, 
         energy: document.getElementById("energy").value,
-        date: new Date().toLocaleString()
+        date: new Date().toLocaleString([], {
+            month: "long",
+            day: "numeric",
+            year: "numeric",
+            hour: "numeric",
+            minute: "2-digit"
+        })
     };
 
     let checkins = getCheckins();

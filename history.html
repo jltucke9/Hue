@@ -28,32 +28,35 @@
                 <div id="history-list">
                 </div>
             </section>
-            <section id="emotional-map">
-                <div class="map-area">
-                    <span class="map-label top">High Energy</span>
-                    <span class="map-label bottom">Low Energy</span>
-                    <span class="map-label left">Low Intensity</span>
-                    <span class="map-label right">High Intensity</span>
-                </div>
-            </section>
-            <section class="checkin-details">
-                <h2>Selected Check&#45;In</h2>
-                <div class="details-color">
-                    <span id="detail-color"></span>
-                </div>
+            <div class="history-layout">
+                <section id="emotional-map">
+                    <div class="map-area">
+                        <span class="map-label top">High Energy</span>
+                        <span class="map-label bottom">Low Energy</span>
+                        <span class="map-label left">Low Intensity</span>
+                        <span class="map-label right">High Intensity</span>
+                    </div>
+                </section>
+                <section class="checkin-details">
+                    <h2>Selected Check&#45;In</h2>
+                    <p class="map-help">Select a color on the map to view its details.</p>
+                    <div class="details-color">
+                        <span id="detail-color"></span>
+                    </div>
 
-                <div class="details-grid">
-                    <div>
-                        <span class="detail-label">Intensity</span>
-                        <p id="detail-intensity">--</p>
+                    <div class="details-grid">
+                        <div>
+                            <span class="detail-label">Intensity</span>
+                            <p id="detail-intensity">--</p>
+                        </div>
+                        <div>
+                            <span class="detail-label">Energy</span>
+                            <p id="detail-energy">--</p>
+                        </div>
                     </div>
-                    <div>
-                        <span class="detail-label">Energy</span>
-                        <p id="detail-energy">--</p>
-                    </div>
-                </div>
-                <p id="detail-date">Select a check-in to view details</p>
-            </section>
+                    <p id="detail-date">Select a check-in to view details</p>
+                </section>
+            </div>
         </main>
         <footer>
             <p>&copy;2026 Hue. Designed and Developed by Jeanne Tucker.</p>
