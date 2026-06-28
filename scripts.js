@@ -101,7 +101,7 @@ function saveCheckin() {
             year: "numeric",
             hour: "numeric",
             minute: "2-digit"
-        }).replace(",", "at")
+        }).replace(",", " at")
     };
 
     let checkins = getCheckins();
@@ -110,16 +110,7 @@ function saveCheckin() {
 
     saveCheckins(checkins);
 
-    fetch("/api/reflections", {
-        method: "POST"
-    })
-    .then(function() {
-        window.location.href = "history.html";
-    })
-    .catch(function(error) {
-        console.log("Reflection count could not update:", error);
-        window.location.href = "history.html";
-    });
+    window.location.href = "history.html";
 }
 
 // display history
@@ -200,17 +191,9 @@ function displayReflectionCount() {
         return;
     }
 
-    fetch("/api/reflections")
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(data) {
-            counter.textContent = "Total Hue Reflections: " + data.totalReflections;
-        })
-        .catch(function(error) {
-            counter.textContent = "Total Hue Reflections: --";
-            console.log("Reflection count could not load:", error)
-        });
+    let checkins = getCheckins();
+
+    counter.textContent = "Check-Ins Completed: " + checkins.length;
 }
 
 displayReflectionCount();

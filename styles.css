@@ -683,10 +683,7 @@ input[type="range"] {
 }
 
 .map-help {
-
-    text-align: center;
-    color: var(--muted-text);
-    font-size: 0.95rem;
+    display: none;
 }
 
 /* -------- Emotional Map -------- */
@@ -715,18 +712,18 @@ input[type="range"] {
     content: "";
     position: absolute;
     left: 50%;
-    top: 9%;
+    top: 8.5%;
     width: 1px;
-    height: 85%;
+    height: 83%;
     background-color: var(--glass-border);
 }
 
 .map-area::after {
     content: "";
     position: absolute;
-    left: 20.5%;
+    left: 21%;
     top: 50%;
-    width: 58%;
+    width: 60%;
     height: 1px;
     background-color: var(--glass-border);
 }
@@ -736,33 +733,39 @@ input[type="range"] {
     color: var(--muted-text);
     font-size: 0.95rem;
     font-weight: 500;
-    padding: var(--space-md);
+    padding: var(--space-sm);
 }
 
 .map-label.top {
     top: var(--space-sm);
     left: 50%;
     transform: translateX(-50%);
+    padding: 0;
 }
 
 .map-label.bottom {
     bottom: var(--space-sm);
     left: 50%;
     transform: translateX(-50%);
-    padding: 0 0.35rem;
+    padding: 0;
 }
 
 .map-label.left {
     left: var(--space-md);
     top: 50%;
     transform: translateY(-50%);
-    padding: 0 0.35rem;
+    padding: 0;
+    line-height: 1.2;
+    text-align: center;
 }
 
 .map-label.right {
     right: var(--space-sm);
     top: 50%;
     transform: translateY(-50%);
+    line-height: 1.2;
+    text-align: center;
+    padding: 0;
 }
 
 .map-dot {
@@ -824,7 +827,7 @@ input[type="range"] {
 
     footer {
         font-size: 0.8rem;
-        padding: 1rem;
+        padding: var(--space-lg);
     }
 
     /* Home */
@@ -832,6 +835,7 @@ input[type="range"] {
         width: 360px;
         height: 360px;
         padding: 2rem;
+        margin: var(--space-sm);
     }
 
     .bubble h2 {
@@ -860,16 +864,18 @@ input[type="range"] {
     }    
 
     #checkin h2  {
-        font-size: 1.85rem;
+        font-size: 1.5rem;
         margin-bottom: 1rem;
         line-height: 1.2;
     }
 
     #checkin label {
-        font-size: 0.8rem;
+        font-size: .9rem;
+        color: var(--muted-text);
     }
 
     .helper-text {
+        display: hidden;
         font-size: 0.95rem;
         line-height: 1.5;
         margin-bottom: 1.5rem;
@@ -887,6 +893,11 @@ input[type="range"] {
 
     .selected-color {
         margin-bottom: 0.75rem;
+    }
+
+    #selected-color-swatch {
+        width: 24px;
+        height: 24px;
     }
 
     .scale {
@@ -956,6 +967,18 @@ input[type="range"] {
         height: 90vw;
         max-height: 430px;
     }
+
+    .map-label {
+    padding: var(--space-sm)
+    }
+
+    .map-help {
+        display: block;
+        margin-top: var(--space-md);
+        text-align: center;
+        color: var(--muted-text);
+        font-size: 0.95rem;
+}
 
     .checkin-details {
         width: 90vw;
