@@ -197,7 +197,7 @@ nav a.active::after {
 }
 
 /* -------- Typography --------- */
-h1, h2 {
+h1, h2, h3 {
     font-family: var(--font-header);
 }
 
@@ -257,11 +257,11 @@ button:hover {
 .home-checkin-btn:hover {
     background-color: var(--plum);
 }
-
-#checkin button {
+.primary-btn {
     display: inline-flex;
     align-items: center;
-    gap: var(--space-md);
+    justify-content: center;
+    gap: var(--space-sm);
     padding: 0.85rem 2.25rem;
     border-radius: 999px;
     font-size: 1rem;
@@ -272,6 +272,33 @@ button:hover {
 #color-next-btn:disabled {
     opacity: 0.45;
     cursor: not-allowed;
+}
+
+.step-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-md);
+    margin-top: 2rem;
+}
+
+.back-btn {
+    background: transparent !important;
+    box-shadow: none !important;
+    color: var(--muted-text);
+    padding: 0.85rem 0 !important;
+}
+
+.back-btn:hover {
+    color: var(--white);
+    background: transparent !important;
+    transform: none;
+    box-shadow: none !important;
+}
+
+.material-symbols-outlined {
+    font-size: 1.5rem;
+    line-height: 1;
 }
 
 /* -------- Animation ---------- */
@@ -762,6 +789,14 @@ input[type="range"] {
 
 /* -------- Responsive Styles -------- */
 @media screen and (max-width: 920px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    main {
+        padding: 0 var(--space-md);
+    }
+
     header {
         padding: 1.25rem 1rem 0.5rem;
     }
@@ -771,10 +806,20 @@ input[type="range"] {
         margin-top: 0.5rem
     }
 
+    nav a {
+        font-size: 1rem;
+    }
+
     h1 {
         font-size: 3.25rem;
     }
 
+    footer {
+        font-size: 0.8rem;
+        padding: 1rem;
+    }
+
+    /* Home */
     .bubble {
         width: 360px;
         height: 360px;
@@ -785,22 +830,17 @@ input[type="range"] {
         font-size: 2.4rem;
     }
 
-    .step {
-        padding: 2rem 1.5rem;
+    #welcome p {
+        max-width: 260px;
+        margin-bottom: 1.75rem;
     }
 
+    /* Check-In */
+    #checkin {
+        max-width: 100%;
+    }
     #checkin h1 {
         margin-bottom: 1.25rem;
-    }
-
-    #checkin h2 {
-        font-size: 1.65rem;
-        margin-bottom: 1rem;
-        line-height: 1.2;
-    }
-
-    #checkin label {
-        font-size: 0.8rem;
     }
 
     #checkin section {
@@ -809,11 +849,27 @@ input[type="range"] {
 
     .step {
         padding: 1.5rem 1.25rem;
+    }    
+
+    #checkin h2  {
+        font-size: 1.85rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+
+    #checkin label {
+        font-size: 0.8rem;
+    }
+
+    .helper-text {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
     }
 
     .color-wheel {
-        width: 200px;
-        height: 200px;
+        width: 210px;
+        height: 210px;
         margin: 1rem auto;
     }
 
@@ -825,15 +881,60 @@ input[type="range"] {
         margin-bottom: 0.75rem;
     }
 
+    .scale {
+        margin-top: 1.75rem;
+        margin-bottom: 3.5rem;
+    }
+
+    .value-wrapper {
+        margin: 2rem 0;
+        text-align: center;
+    }    
+
+    .value-number {
+        font-size: 2.25rem;
+    }
+
+    .step-buttons {
+        gap: 0.75rem;
+    }    
+
+    .back-btn {
+        flex: 0 0 auto;
+        width: auto;
+        font-size: 0.95rem;
+    }
+
+    .primary-btn {
+        flex: 1;
+        max-width: none;
+    }
+
     #checkin button {
+        margin: 0 auto;
+        justify-content: center;
         padding: 0.7rem 1.75rem;
     }
 
+    .material-symbols-outlined {
+        font-size: 1.3rem;
+    }
+
+    /* History */
+    #history h1 {
+        font-size: 3.25rem;
+    }
+
+    #history p {
+        font-size: 0.95rem;
+        padding: 0 var(--space-md);
+    }
 
     .history-layout {
         flex-direction: column;
         align-items: center;
         gap: 2rem;
+        margin: var(--space-lg) auto;
     }
 
     #emotional-map {
@@ -842,14 +943,14 @@ input[type="range"] {
 
     .map-area {
         width: 90vw;
-        max-width: 500px;
+        max-width: 430px;
         height: 90vw;
-        max-height: 500px;
+        max-height: 430px;
     }
 
     .checkin-details {
         width: 90vw;
-        max-width: 420px;
+        max-width: 380px;
         min-height: auto;
     }
 }

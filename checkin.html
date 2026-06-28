@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="styles.css">
         <script src="scripts.js" defer></script>
 
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_forward">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
     </head>
     <body>
         <header>
@@ -39,13 +39,13 @@
                         <span id="selected-color-swatch"></span>
                         <span id="selected-color-text">Your selected color</span>
                     </div>
-                    
                     <button type="button" id="color-next-btn" disabled>Next</button>
-
                 </section>
+
+                <!-- Intensity Section -->
                 <section class="step hidden" id="intensity-selection">
-                    <h3>How intense does this feeling feel?</h3>
-                    <p class="helper-text">Use the slider to show how strong this feeling is right now.</p>
+                    <h2>How intense does this feeling feel?</h2>
+                    <label class="helper-text">Use the slider to show how strong this feeling is right now.</label>
                     
                     <input type="range" id="intensity" min="0" max="10" value="5">
                     
@@ -58,15 +58,25 @@
                         <span class="value-label">Intensity</span>
                         <span id="intensity-value" class="value-number"></span>
                     </div>
-                    <button type="button" id="intensity-next-btn">
+
+                    <!-- Intensity Buttons -->
+                    <div class="step-buttons">
+                        <button type="button" class="back-btn" id="back-to-color-btn">
+                        <span class="material-symbols-outlined">arrow_back
+                        </span>
+                        <span>Back</span>
+                    </button>
+                    <button type="button" class="primary-btn" id="intensity-next-btn">
                         <span>Continue</span>
                         <span class="material-symbols-outlined">arrow_forward
                         </span>
                     </button>
+                    </div>
                 </section>
+                <!-- Energy Section -->
                 <section class="step hidden" id="energy-selection">
-                    <h3>How much energy do you have?</h3>
-                    <p class="helper-text">Use the slider to show how much energy you have right now.</p>
+                    <h2>How much energy do you have?</h2>
+                    <label class="helper-text">Use the slider to show how much energy you have right now.</label>
 
                     <input type="range" id="energy" min="0" max="10" value="5">
              
@@ -74,12 +84,32 @@
                         <span>Low energy</span>
                         <span>High energy</span>
                     </div>
-                    
+
                     <div class="value-wrapper">
                         <span class="value-label">Energy</span>
                         <span id="energy-value" class="value-number"></span>
                     </div>
-                    <button type="button" id="save-checkin-btn">Save Check&#45;In</button>
+
+                    <!-- Energy Buttons -->
+                    <div 
+                        class="step-buttons">
+                        <button 
+                            type="button" 
+                            class="back-btn"
+                            id="back-to-intensity-btn">
+                        <span class="material-symbols-outlined">arrow_back
+                        </span>
+                        <span>Back</span>
+                    </button>
+                    <button 
+                        type="button" 
+                        class="primary-btn"
+                        id="save-checkin-btn">
+                        <span>Save Check&#45;In</span>
+                        <span class="material-symbols-outlined">arrow_forward
+                        </span>
+                    </button>
+                    </div>
                 </section>
             </section>
         </main>

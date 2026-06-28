@@ -55,7 +55,10 @@ function pickColor(e) {
     selectedColorDisplay.classList.add("visible");
     colorNextButton.disabled = false;
 }
-
+function showColor() {
+    document.getElementById("intensity-selection").classList.add("hidden");
+    document.getElementById("color-selection").classList.remove("hidden");
+}
 
 // intensity step
 function showIntensity() {
@@ -168,6 +171,13 @@ function displayMap() {
             document.getElementById("detail-intensity").textContent = intensity;
             document.getElementById("detail-energy").textContent = energy;
             document.getElementById("detail-date").textContent = checkin.date;
+        
+            if(window.innerWidth <= 920) {
+                document.querySelector(".checkin-details").scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }
         });
 
         mapArea.appendChild(mapDot);
@@ -176,13 +186,17 @@ function displayMap() {
 
 
 // event listeners
-if(document.getElementById("color-next-btn")) {
-    document.getElementById("color-next-btn").addEventListener("click", showIntensity);
+if(document.getElementById("back-to-color-btn")) {
+    document.getElementById("back-to-color-btn").addEventListener("click", showColor);
 }
 
 if(document.querySelector(".color-wheel")) {
     document.querySelector(".color-wheel").addEventListener("mousemove", previewColor);
     document.querySelector(".color-wheel").addEventListener("click", pickColor);
+}
+
+if(document.getElementById("color-next-btn")) {
+    document.getElementById("color-next-btn").addEventListener("click", showIntensity)
 }
 
 if(document.getElementById("intensity-next-btn")) {
@@ -197,6 +211,11 @@ if(document.getElementById("energy")) {
     document.getElementById("energy").addEventListener("input", updateEnergy);
     updateEnergy();
 }
+
+if(document.getElementById("back-to-intensity-btn")) {
+    document.getElementById("back-to-intensity-btn").addEventListener("click", showIntensity);
+}
+
 if(document.getElementById("save-checkin-btn")) {
    document.getElementById("save-checkin-btn").addEventListener("click", saveCheckin); 
 }
