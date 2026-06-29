@@ -113,10 +113,14 @@ body {
     font-family: var(--font-main);
     line-height: 1.25;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 main {
+    flex: 1;
     max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
     padding: var(--space-md);
 }
@@ -198,7 +202,7 @@ footer {
     text-align: center;
     font-size: 0.8rem;
     opacity: .7;
-    margin-top: var(--space-xl);
+    margin-top: auto;
 }
 
 #reflection-counter {
@@ -218,7 +222,7 @@ h1 {
 }
 
 h2 {
-    font-size: 1.75rem;
+    font-size: 1.65rem;
     margin-bottom: var(--space-sm);
 }
 
@@ -392,6 +396,7 @@ button:hover {
 
 #checkin h1 {
     margin: var(--space-sm);
+    font-size: 3.25rem;
 }
 
 #checkin h2 {
@@ -482,11 +487,16 @@ button:hover {
 }
 
 #selected-color-swatch {
-    width: 26px;
-    height: 26px;
+    width: 24px;
+    height: 24px;
     border-radius: var(--circle);
     border: 2px solid var(--glass-border);
 }
+
+#selected-color-text {
+    font-size: 0.85rem;
+        margin: var(--space-sm);
+    }
 
 #footer {
     margin-top: 0;
@@ -828,7 +838,8 @@ input[type="range"] {
 }
 
 /* -------- Responsive Styles -------- */
-@media screen and (min-width: 920px) {
+
+@media screen and (min-width: 620px) {
     main {
         padding: var(--space-lg);
     }
@@ -838,11 +849,15 @@ input[type="range"] {
     }
 
     nav a {
-        font-size: 1rem;
+        font-size: 1.15rem;
     }
 
     h1 {
         font-size: 4.5rem;
+    }
+
+    h2 {
+        font-size: 2.5rem;
     }
 
     #tagline {
@@ -855,5 +870,142 @@ input[type="range"] {
 
     #welcome p {
         font-size: 1rem;
+    }
+
+    .step {
+        line-height: 1.75;
+    }
+
+    .color-wheel {
+        width: 340px;
+        height: 340px;
+    }
+
+    #selected-color-swatch {
+        height: 32px;
+        width: 32px;
+    }
+
+    #selected-color-text {
+        font-size: 1.15rem;
+    }
+    
+
+    label, .helper-text, .value-label {
+        font-size: 1.05rem;
+    }
+
+    .primary-btn, .back-btn {
+        font-size: 1.15rem;
+    }
+
+    #history p { 
+        font-size: 1.15rem;
+    }
+
+    .history-layout {
+        max-width: 680px;
+        gap: 2rem;
+    }
+
+    .map-area {
+        width: 560px;
+        height: 560px;
+        max-width: 100%;
+        max-height: none;
+    }
+
+    .map-area::after {
+        width: 72.5%;
+        left: 14.5%;
+    }
+
+    .map-help {
+        margin: var(--space-md);
+    }
+
+    .checkin-details {
+        width: 460px;
+        max-width: 100%;
+    }
+
+    .checkin-details h2 {
+        font-size: 2.25rem;
+    }
+}
+
+@media screen and (min-width: 920px) {
+    h1 { 
+        font-size: 5rem;
+    }
+
+    footer {
+        font-size: 1rem;
+    }
+
+    .bubble {
+        width: 640px;
+    }
+
+    .bubble h2 {
+        font-size: 4.5rem;
+    }
+
+    #welcome p {
+        font-size: 1.25rem;
+        max-width: 450px;
+    }
+
+    .home-checkin-btn {
+        padding: 1.15rem 3rem;
+        font-size: 1.25rem;
+    }
+
+    .step {
+        max-width: 640px;
+        padding: var(--space-lg);
+    }
+
+    .history-layout {
+        flex-direction: row;
+        align-items: flex-start;
+        max-width: 1050px;
+    }
+
+    .map-area {
+        width: 460px;
+        height: 460px;
+    }
+
+    .checkin-details {
+        width: 340px;
+        min-height: auto;
+    }
+
+    .map-help {
+        display: none;
+    }
+}
+@media screen and (min-width: 1024px) {
+    #history {
+        max-width: 1200px;
+    }
+
+    .history-layout {
+        max-width: 1200px;
+        gap: 3px;
+    }
+
+    .map-area {
+        width: 540px;
+        height: 540px;
+    }
+
+    .checkin-details {
+        width: 340px;
+    }
+
+    .checkin-details h2 {
+        margin-bottom: var(--space-md);
     }
 }
