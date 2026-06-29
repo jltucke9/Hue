@@ -56,18 +56,21 @@ function pickColor(e) {
     colorNextButton.disabled = false;
 }
 function showColor() {
-    document.getElementById("intensity-selection").classList.add("hidden");
     document.getElementById("color-selection").classList.remove("hidden");
+    document.getElementById("intensity-selection").classList.add("hidden");
+    document.getElementById("energy-selection").classList.add("hidden");
 }
 
 // intensity step
 function showIntensity() {
     document.getElementById("color-selection").classList.add("hidden");
     document.getElementById("intensity-selection").classList.remove("hidden");
+    document.getElementById("energy-selection").classList.add("hidden");
 }
 
 // energy step
 function showEnergy() {
+    document.getElementById("color-selection").classList.add("hidden");
     document.getElementById("intensity-selection").classList.add("hidden");
     document.getElementById("energy-selection").classList.remove("hidden");
 }
