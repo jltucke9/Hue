@@ -103,7 +103,7 @@ function saveCheckin() {
             month: "short",
             day: "numeric",
             year: "numeric"
-        }) + " • " +
+        }) + "\n\n" +
         now.toLocaleTimeString([], {
             hour: "numeric",
             minute: "2-digit"
@@ -181,7 +181,9 @@ function displayEmotionalPalette() {
         return;
     }
 
-    for (let checkin of checkins) {
+    let recentCheckins = checkins.slice(-7);
+
+    for (let checkin of recentCheckins) {
         let paletteDot = document.createElement("span");
 
         paletteDot.classList.add("palette-dot");

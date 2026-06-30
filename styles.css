@@ -802,6 +802,12 @@ input[type="range"] {
     border: 2px solid var(--white);
     box-shadow: 0 0 20px var(--glow-blue);
     transform: translate(-50%, -50%);
+    transition: .2s ease;
+}
+
+.map-dot:hover {
+    transform: translate(-50,-50) scale(1.35);
+    cursor: pointer;
 }
 
 /* -------- Summary Details -------- */
@@ -839,13 +845,6 @@ input[type="range"] {
     gap: 1.5rem;
 }
 
-.summary-panel > div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
 .summary-stats > div {
     display: flex;
     flex-direction: column;
@@ -854,9 +853,9 @@ input[type="range"] {
 }
 
 .emotional-palette {
-    margin-top: var(--space-lg);
+    margin-top: 2.5rem;
     padding: 1.5rem;
-    border: 1px solid var(--glass-border);
+    border-top: 1px solid var(--glass-border);
 }
 
 .emotional-palette h3 {
@@ -874,8 +873,8 @@ input[type="range"] {
 }
 
 .palette-dot {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     display: inline-block;
     border-radius: 50%;
     border: 2px solid var(--white);
