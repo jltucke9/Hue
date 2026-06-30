@@ -107,7 +107,8 @@ function saveCheckin() {
         now.toLocaleTimeString([], {
             hour: "numeric",
             minute: "2-digit"
-        })      
+        }),    
+        dateKey: now.toISOString()
     };
 
     let checkins = getCheckins();
