@@ -93,27 +93,102 @@ function updateEnergy() {
 
 // save check-in
 function saveCheckin() {
+    let now = new Date();
 
     let checkin = {
         color: document.getElementById("color-picker").value, 
         intensity: document.getElementById("intensity").value, 
         energy: document.getElementById("energy").value,
-        date: new Date().toLocaleString([], {
-            month: "long",
+        date: now.toLocaleDateString([], {
+            month: "short",
             day: "numeric",
-            year: "numeric",
+            year: "numeric"
+        }) + " • " +
+        now.toLocaleTimeString([], {
             hour: "numeric",
             minute: "2-digit"
-        }).replace(",", " at")
+        })      
     };
 
     let checkins = getCheckins();
-
     checkins.push(checkin);
-
     saveCheckins(checkins);
 
     window.location.href = "history.html";
+}
+
+// display history summary
+function displayHistorySummary() {
+    let checkins = getCheckins();
+
+    let totalCheckins = document.getElementById("total-checkins");
+    let daysReflected = document.getElementById("days-reflected");
+    let latestCheckin = document.getElementById("latest-checkin");
+    let emptyMessage = document.getElementById("empty-history-message");
+
+    if(!totalCheckins || !daysReflected || !latestCheckin || !emptyMessage) {
+        return;
+    }
+
+    totalCheckins.textContent = checkins.length;
+
+    if(checkins.length === 0) {
+        totalCheckins.textContent = "0";
+        daysReflected.textContent = "0";
+        latestCheckin.textContent = "0";
+        emptyMessage.classList.remove("hidden");
+        return;
+    }
+
+    emptyMessage.classList.add("hidden");
+
+    let currentMonth = new Date().getMonth();
+    let currentYear = new Date().getFullYear();
+
+    let reflectedDays = [];
+
+    for (let checkin of checkins) {
+        let checkinDate = new Date(checkin.date);
+
+        if (checkinDate.getMonth() === currentMonth && checkinDate.getFullYear() === currentYear) {
+            let dayKey = checkinDate.toDateString();
+
+            if (!reflectedDays.includes(dayKey)) {
+                reflectedDays.push(dayKey);
+            }
+        }
+    }
+
+    let mostRecent = checkins[checkins.length - 1];
+
+    daysReflected.textContent = reflectedDays.length;
+    latestCheckin.textContent = mostRecent.date;
+}
+
+function displayEmotionalPalette() {
+    let paletteColors = document.getElementById("palette-colors");
+
+    if(!paletteColors) {
+        return;
+    }
+
+    let checkins = getCheckins();
+    paletteColors.innerHTML = "";
+
+    if (checkins.length === 0) {
+        paletteColors.innerHTML = "<p>No colors saved yet.</p>";
+        return;
+    }
+
+    for (let checkin of checkins) {
+        let paletteDot = document.createElement("span");
+
+        paletteDot.classList.add("palette-dot");
+        paletteDot.style.backgroundColor = checkin.color;
+        paletteDot.title = checkin.date;
+
+        paletteColors.appendChild(paletteDot);
+    }
 }
 
 // display history
@@ -199,8 +274,9 @@ function displayReflectionCount() {
     counter.textContent = "Check-Ins Completed: " + checkins.length;
 }
 
+displayHistorySummary();
+displayEmotionalPalette();
 displayReflectionCount();
-
 
 // event listeners
 if(document.getElementById("back-to-color-btn")) {
@@ -213,7 +289,7 @@ if(document.querySelector(".color-wheel")) {
 }
 
 if(document.getElementById("color-next-btn")) {
-    document.getElementById("color-next-btn").addEventListener("click", showIntensity)
+    document.getElementById("color-next-btn").addEventListener("click", showIntensity);
 }
 
 if(document.getElementById("intensity-next-btn")) {

@@ -24,12 +24,48 @@
         <main id="main">
             <section id="history">
                 <h1>History</h1>
-                <p>Your emotional map shows how your color check&#45;ins relate to intensity and energy.</p>
+                <p class="page-intro">Review your color check&#45;ins and discover your emotional patterns over time.</p>
+
+                <section id="reflection-summary" aria-labelledby="summary-heading">
+                    <h2 id="summary-heading">Reflection Summary</h2>
+
+                    <div id="history-summary" class="summary-panel">
+                        <div class="summary-stats">
+                            <div>
+                                <span id="total-checkins" class="summary-value">&#45;&#45;</span>
+                                <span class="summary-label">Check&#45;Ins</span>
+                            </div>
+
+                            <div>
+                                <span id="days-reflected" class="summary-value">&#45;&#45;</span>
+                                <span class="summary-label">Active Days</span>
+                            </div>
+
+                            <div>
+                                <span id="latest-checkin" class="summary-value small-value">&#45;&#45;</span>
+                                <span class="summary-label">Last Check&#45;In</span>
+                            </div>
+                        </div>
+
+                        <div class="emotional-palette">
+                            <h3>Your Emotional Palette</h3>
+                            <div id="palette-colors" class="palette-colors"></div>
+                        </div>
+                    </div>
+
+                    <p id="empty-history-message" class="empty-history-message">
+                        No check&#45;ins yet.<br>Start your first check&#45;in to begin tracking your patterns.</p>
+                </section>
                 <div id="history-list">
                 </div>
             </section>
             <div class="history-layout">
                 <section id="emotional-map">
+                    <div class="section-heading">
+                        <h2 id="map-heading">Emotional Map</h2>
+                        <p>See how your color check&#45;ins relate to the intensity and energy over time.</p>
+                    </div>
+    
                     <div class="map-area">
                         <span class="map-label top">High Energy</span>
                         <span class="map-label bottom">Low Energy</span>
@@ -40,6 +76,7 @@
                             High<br>Intensity
                         </span>
                     </div>
+
                     <p class="map-help">Select a color on the map to view its details.</p>
                 </section>
                 <section class="checkin-details">
