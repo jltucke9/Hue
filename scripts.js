@@ -103,8 +103,9 @@ function saveCheckin() {
             month: "short",
             day: "numeric",
             year: "numeric"
-        }) + "\n\n" +
-        now.toLocaleTimeString([], {
+        }),
+
+        time: now.toLocaleTimeString([], {
             hour: "numeric",
             minute: "2-digit"
         }),    
@@ -124,7 +125,7 @@ function displayHistorySummary() {
 
     let totalCheckins = document.getElementById("total-checkins");
     let daysReflected = document.getElementById("days-reflected");
-    let latestCheckin = document.getElementById("latest-checkin");
+    let latestCheckin = document.getElementById("last-checkin");
     let emptyMessage = document.getElementById("empty-history-message");
 
     if(!totalCheckins || !daysReflected || !latestCheckin || !emptyMessage) {
@@ -136,7 +137,7 @@ function displayHistorySummary() {
     if(checkins.length === 0) {
         totalCheckins.textContent = "0";
         daysReflected.textContent = "0";
-        latestCheckin.textContent = "0";
+        latestCheckin.textContent = "--";
         emptyMessage.classList.remove("hidden");
         return;
     }
@@ -149,7 +150,7 @@ function displayHistorySummary() {
     let reflectedDays = [];
 
     for (let checkin of checkins) {
-        let checkinDate = new Date(checkin.date);
+        let checkinDate = new Date(checkin.dateKey);
 
         if (checkinDate.getMonth() === currentMonth && checkinDate.getFullYear() === currentYear) {
             let dayKey = checkinDate.toDateString();
@@ -163,9 +164,14 @@ function displayHistorySummary() {
     let mostRecent = checkins[checkins.length - 1];
 
     daysReflected.textContent = reflectedDays.length;
-    latestCheckin.textContent = mostRecent.date;
+    
+    latestCheckin.innerHTML = `
+        ${mostRecent.date}
+        ${mostRecent.time ? "<br>" + mostRecent.time : ""}
+    `;
 }
 
+// display emotional palette
 function displayEmotionalPalette() {
     let paletteColors = document.getElementById("palette-colors");
 
@@ -265,21 +271,9 @@ function displayMap() {
     }
 }
 
-function displayReflectionCount() {
-    let counter = document.getElementById("reflection-counter");
-
-    if(!counter) {
-        return;
-    }
-
-    let checkins = getCheckins();
-
-    counter.textContent = "Check-Ins Completed: " + checkins.length;
-}
-
 displayHistorySummary();
 displayEmotionalPalette();
-displayReflectionCount();
+
 
 // event listeners
 if(document.getElementById("back-to-color-btn")) {
