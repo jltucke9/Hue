@@ -165,6 +165,7 @@ nav ul {
     gap: 3rem;
     justify-content: center;
     margin-top: var(--space-md);
+    padding-top: 1rem;
 }
 
 nav a {
@@ -219,11 +220,16 @@ h1, h2 {
 h1 {
     font-size: 3.5rem;;
     font-weight: 600;
+    padding-top: 1rem;
 }
 
 h2 {
-    font-size: 1.65rem;
+    font-size: 1.85rem;
     margin-bottom: var(--space-sm);
+}
+
+h3 {
+    font-size: 1.25rem;
 }
 
 #tagline {
@@ -231,7 +237,6 @@ h2 {
     font-weight: 400;
     opacity: .85;
     margin-top: 0.25rem;
-    margin-bottom: 1.5rem;
     color: var(--muted-text);
 }
 
@@ -394,12 +399,15 @@ button:hover {
     text-align: center;
 }
 
-#checkin h1 {
-    margin: var(--space-sm);
-    font-size: 3.25rem;
+#checkin nav {
+    padding-top: 3rem;
 }
 
 #checkin h2 {
+    margin: var(--space-sm);
+}
+
+#checkin h3 {
     margin-bottom: var(--space-sm);
 }
 
@@ -423,6 +431,7 @@ button:hover {
     margin: 0 auto 1.25rem;
     opacity: .75;
     font-size: 0.85;
+    padding: .5rem 2rem;
 }
 
 #color-selection.step, #intensity-selection.step, #energy-selection.step  {
@@ -431,8 +440,8 @@ button:hover {
 
 .color-wheel {
     position: relative;
-    width: 240px;
-    height: 240px;
+    width: 200px;
+    height: 200px;
     margin: 1.5rem auto var(--space-sm);
     border-radius: var(--circle);
     overflow: hidden;
@@ -456,8 +465,8 @@ button:hover {
 
 .magnifier {
     position: absolute;
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
     border: 3px solid var(--white);
     border-radius: var(--circle);
     left: 50%;
@@ -524,10 +533,10 @@ input[type="range"] {
 .helper-text {
     color: var(--muted-text);
     margin: 0 auto;
-    max-width: 560px;
+    max-width: 500px;
     color: rgba(216, 221, 244, .70);
     font-size: .85rem;
-    padding-bottom: var(--space-lg);
+    padding: 1rem 2rem;
     line-height: 1.5;
 }
 
