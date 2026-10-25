@@ -166,6 +166,7 @@ nav ul {
     justify-content: center;
     margin-top: var(--space-md);
     padding-top: 1rem;
+    padding-bottom: 1.65rem;
 }
 
 nav a {
@@ -419,9 +420,9 @@ button:hover {
     background-color: var(--glass);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-lg);
-    padding: 1.5rem var(--space-md);
     margin: 0 auto;
     box-shadow: 0 0 40px var(--glow-blue);
+    padding: 1rem;
 }
 
 /* -------- Color Picker --------- */
@@ -518,7 +519,6 @@ button:hover {
     justify-content: space-between;
     color: var(--muted-text);
     margin-top: 1.5rem;
-    margin-bottom: 3.5rem;
     font-size: 0.9rem;
     font-weight: 500;
     opacity: .75;
@@ -806,10 +806,10 @@ input[type="range"] {
 
 .map-dot {
     position: absolute;
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     border-radius: var(--circle);
-    border: 2px solid var(--white);
+    border: 1px solid var(--white);
     box-shadow: 0 0 20px var(--glow-blue);
     transform: translate(-50%, -50%);
     transition: .2s ease;
@@ -860,7 +860,6 @@ input[type="range"] {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 110px;
 }
 
 .last-checkin {
@@ -880,8 +879,8 @@ input[type="range"] {
 }
 
 .emotional-palette {
-    margin-top: 2.5rem;
-    padding: 1.5rem;
+    margin-top: 1rem;
+    padding: 1rem;
     border-top: 1px solid var(--glass-border);
 }
 
@@ -927,14 +926,14 @@ input[type="range"] {
     display: block;
     font-family: var(--font-header);
     color: var(--white);
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     line-height: 1;
     margin-bottom: 0.75rem;
 }
 
 .summary-date {
     font-family: var(--font-header);
-    font-size: 1.1rem;
+    font-size: 15px;
     line-height: 1.5;
     font-weight: 600;
 }
@@ -986,7 +985,7 @@ input[type="range"] {
 
 @media screen and (min-width: 620px) {
     main {
-        padding: var(--space-lg);
+        padding: 4rem;
     }
 
     header {
@@ -1019,7 +1018,7 @@ input[type="range"] {
 
     .step {
         line-height: 1.75;
-        max-width: 640px;
+        max-width: 550px;
     }
 
     .color-wheel {
@@ -1113,7 +1112,7 @@ input[type="range"] {
 
 @media screen and (min-width: 920px) {
     h1 { 
-        font-size: 5rem;
+        font-size: 4rem;
     }
 
     footer {
@@ -1121,11 +1120,11 @@ input[type="range"] {
     }
 
     .bubble {
-        width: 640px;
+        width: 600px;
     }
 
     .bubble h2 {
-        font-size: 4.5rem;
+        font-size: 2.75rem;
     }
 
     #welcome p {
@@ -1139,7 +1138,7 @@ input[type="range"] {
     }
 
     .step {
-        padding: var(--space-lg);
+        padding: var(--space-lg) 3rem;
     }
 
     #history {
@@ -1214,6 +1213,25 @@ input[type="range"] {
     }
 }
 @media screen and (min-width: 1024px) {
+    .bubble {
+        width: 550px;
+    }
+
+    #welcome p {
+        font-size: 1.05rem;
+        padding: 0 1.25rem;
+    }
+
+    .home-checkin-btn {
+        padding: 1rem 2rem;
+        font-size: 1.05rem;
+    }
+
+    .color-wheel {
+        width: 300px;
+        height: 300px
+    }
+
     #history {
         max-width: 1200px;
     }
